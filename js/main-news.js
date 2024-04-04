@@ -1,6 +1,11 @@
 // const API_KEY = "";
-const API_KEY = "413ebebdfb2443e1aa5a426a2af6f439";
-const url = "https://newsapi.org/v2/everything?q=";
+// const API_KEY = "413ebebdfb2443e1aa5a426a2af6f439";
+// const url = "https://newsapi.org/v2/everything?q=";
+
+
+// const API_KEY = "";
+const API_KEY = "pub_41374058451432a24eb77e3552c8fb2010e7d";
+const url = "https://newsdata.io/api/1/news?apikey=" + API_KEY + "&q=";
 
 window.addEventListener("load", () => fetchNews("India"));
 
@@ -9,13 +14,13 @@ async function fetchNews(query) {
 
 	console.log("fetching news with query : " + query);
 
-	const res = await fetch(`${url}${query}&apiKey=${API_KEY}`);
+	const res = await fetch(`${url}${query}`);
 	const data = await res.json();
 	console.log(data);
 	console.log("Logging from the fetchNews function");
 	console.log(data.articles);
 
-	showContentInCard(data.articles);
+	// showContentInCard(data.articles);
 }
 
 
