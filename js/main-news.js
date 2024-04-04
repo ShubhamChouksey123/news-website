@@ -17,10 +17,11 @@ async function fetchNews(query) {
 	const res = await fetch(`${url}${query}`);
 	const data = await res.json();
 	console.log(data);
+	console.log("data next page : " + data.nextPage);
 	console.log("Logging from the fetchNews function");
-	console.log(data.articles);
+	console.log(data.results);
 
-	// showContentInCard(data.articles);
+	showContentInCard(data.results);
 }
 
 
@@ -35,7 +36,7 @@ function showContentInCard(articles) {
 
 	articles.forEach(article => {
 
-		if (!article.urlToImage) {
+		if (!article.image_url) {
 			console.log("Image is null for article : " + article.title);
 			return;
 		}
@@ -76,24 +77,25 @@ function fillNthCard(article, clone, i) {
 	console.log(article);
 	// Fill in the data
 	const img = clone.querySelector('#news-img-' + i);
-	img.src = article.urlToImage;
+	img.src = article.image_url;
 	img.alt = article.title;
 
 	const title = clone.querySelector('#news-title-' + i + ' a');
 	title.textContent = article.title;
-	title.href = article.url;
+	title.href = article.link;
 
 	const desc = clone.querySelector('#news-desc-' + i + ' a');
 	desc.textContent = article.description;
-	desc.href = article.url;
+	desc.href = article.link;
 
 
-	const dateNews = new Date(article.publishedAt).toLocaleString("en-US", {
+	const dateNews = new Date(article.pubDate).toLocaleString("en-US", {
 		timeZone: "Asia/Jakarta",
 	});
 
 	const date = clone.querySelector('#news-source-' + i);
-	date.textContent = `${article.source.name} · ${dateNews}`;
+	// date.textContent = `${article.source.name} · ${dateNews}`;
+	date.textContent = dateNews;
 }
 
 
