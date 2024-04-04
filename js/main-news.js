@@ -98,6 +98,7 @@ function searchViaKeyWord(keyword) {
 	if (!keyword)
 		return;
 
+	// closeSideCanvas();
 	fetchNews(keyword);
 }
 
@@ -115,3 +116,14 @@ searchButton.addEventListener("click", () => {
 	// curSelectedNav = null;
 });
 
+
+const canvasWindow = document.getElementById('fh5co-offcanvas');
+function closeSideCanvas() {
+	console.log("closing side canvas");
+	canvasWindow.style.display = 'none';
+}
+
+
+function openSideCanvas() {
+	canvasWindow.style.display = 'block';
+}

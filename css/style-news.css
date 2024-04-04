@@ -1,3 +1,11 @@
 .article-box {
-  border: black solid 2px;
+  /* border: black solid 2px;
+  margin: auto;
+  display: flex;
+  flex-direction: column; */
+}
+
+.article-box-inner {
+  display: flex;
+  flex-direction: column;
 }
